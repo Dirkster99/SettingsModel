@@ -37,11 +37,11 @@ This demo can be used to explore the basic concept with the debugger. It creates
     <ForegroundColor>C:\temp\source\</ForegroundColor>
     <Fontsize>24</Fontsize>
   </Appearance>
-</NewDataSet>```
+</NewDataSet>
+```
 
 The code below creates a **SettingsModel** with 2 option groups called **Options** and **Appearance**:
-```
-var engine = Factory.CreateEngine();
+```var engine = Factory.CreateEngine();
 
 engine.AddOption("Options", "ReloadOpenFilesFromLastSession", typeof(bool), false, true);
 engine.AddOption("Options", "SourceFilePath", typeof(string), false, @"C:\temp\source\");
@@ -62,15 +62,12 @@ bSucc = engine.SetOptionValue("Options", "Bookmarks", "item4");
 ```
 
 The code below stores a **SettingsModel** in an XML file:
-```
-string filenamepath = @"C:\TEMP\result.xml";
+```string filenamepath = @"C:\TEMP\result.xml";
 engine.WriteXML(filenamepath);
 ```
 
-
 The code below reads a **SettingsModel** from an XML file:
-```
-string filenamepath = @"C:\TEMP\result.xml";
+```string filenamepath = @"C:\TEMP\result.xml";
 readEngine.ReadXML(filenamepath);
 ```
 
