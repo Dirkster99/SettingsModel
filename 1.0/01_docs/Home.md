@@ -4,7 +4,7 @@ An API library that supports storage and retrieval of program settings through a
 # Introduction
 
 Test this framework inside my application:
-* [Locult](locult.codeplex.com)
+* [Locult](https://locult.codeplex.com)
 
 I used to store settings with the build in settings class in .Net but switched to custom serializable classes to make things easier to debug since the build in .Net class has some limitations of its own:.
 [http://www.codeproject.com/Articles/475498/Easier-NET-settings?msg=5087731#xx5087731xx.](http://www.codeproject.com/Articles/475498/Easier-NET-settings?msg=5087731#xx5087731xx.)
@@ -19,7 +19,7 @@ I discovered by accident that I can use the **DataSet** and **DataTable** class 
 
 The result of this development is a project that can be used to store and retrieve program settings. The project can be used pretty much in any other .Net project, be it **Winforms**, **DOS**, or **WPF**...
 
-This repository contains 2 sample projects that exemplify the usage of the **SettingsModel** library. The WPF application [SettingsModelWPFDemo](SettingsModelWPFDemo) is a Modern UI reference application that implements:
+This repository contains 2 sample projects that exemplify the usage of the **SettingsModel** library. The WPF application [SettingsModelWPFDemo](SettingsModelWPFDemo.md) is a Modern UI reference application that implements:
 
 * 2 themes (Dark and Light),
 * supports more than 1 language, and
