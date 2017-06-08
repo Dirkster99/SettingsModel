@@ -9,8 +9,8 @@ The console demo application is rather simple. It informs the user about the XML
 
 This demo can be used to explore the basic concept with the debugger. It creates an **result.xml** file that looks like this;
 
-{{
-<?xml version="1.0" standalone="yes"?>
+
+```<?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Options>
     <ReloadOpenFilesFromLastSession>true</ReloadOpenFilesFromLastSession>
@@ -37,11 +37,10 @@ This demo can be used to explore the basic concept with the debugger. It creates
     <ForegroundColor>C:\temp\source\</ForegroundColor>
     <Fontsize>24</Fontsize>
   </Appearance>
-</NewDataSet>
-}}
+</NewDataSet>```
 
 The code below creates a **SettingsModel** with 2 option groups called **Options** and **Appearance**:
-{{
+```
 var engine = Factory.CreateEngine();
 
 engine.AddOption("Options", "ReloadOpenFilesFromLastSession", typeof(bool), false, true);
@@ -60,20 +59,20 @@ var bSucc = engine.SetOptionValue("Options", "Bookmarks", "item2");
 
 // this should return true since option is not yet available in list
 bSucc = engine.SetOptionValue("Options", "Bookmarks", "item4");
-}}
+```
 
 The code below stores a **SettingsModel** in an XML file:
-{{
+```
 string filenamepath = @"C:\TEMP\result.xml";
 engine.WriteXML(filenamepath);
-}}
+```
 
 
 The code below reads a **SettingsModel** from an XML file:
-{{
+```
 string filenamepath = @"C:\TEMP\result.xml";
 readEngine.ReadXML(filenamepath);
-}}
+```
 
 See also console demo application for more details:
 [https://settingsmodel.codeplex.com/SourceControl/latest#1.0/Demos_Tests/SettingsModelDemoConsole/Program.cs](https://settingsmodel.codeplex.com/SourceControl/latest#1.0/Demos_Tests/SettingsModelDemoConsole/Program.cs)
