@@ -5,4 +5,4 @@ https://SettingsModel.codeplex.com/
 
 Find more details here:
 - [Home](https://github.com/Dirkster99/SettingsModel/blob/master/1.0/01_docs/Home.md)
-- []()
+- [Documentation](https://github.com/Dirkster99/SettingsModel/blob/master/1.0/01_docs/Documentation.md)
