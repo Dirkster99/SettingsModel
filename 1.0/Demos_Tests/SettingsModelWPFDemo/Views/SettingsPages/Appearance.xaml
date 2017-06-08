@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="SettingsModelWPFDemo.Views.SettingsPages.Appearance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600"
+             
+             xmlns:local="clr-namespace:SettingsModelWPFDemo.Local"
+             xmlns:colorpick="clr-namespace:ColorPickerLib.Controls;assembly=ColorPickerLib"
+             >
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="Panel" MinWidth="150" Margin="3">
+                <Grid HorizontalAlignment="Left">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <!-- Dark/Light theme selection -->
+                    <Grid Grid.Column="0" Grid.Row="0" Margin="3" MinWidth="100">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                        <Label Grid.Row="0" Content="{x:Static local:Strings.STR_APPEARANCE_THEME}" ContentStringFormat="{}{0}:" VerticalAlignment="Center" Margin="0,0,16,0" />
+                        <ComboBox Grid.Row="1" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" DisplayMemberPath="DisplayName" VerticalAlignment="Center" Margin="0,0,0,4" />
+                    </Grid>
+
+                    <!-- Accent Color Picker selection -->
+                    <Grid Grid.Column="1" Grid.Row="0" Margin="18,3,3,3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Content="{x:Static local:Strings.STR_ACCENT_LABEL}"
+                               ToolTip="{x:Static local:Strings.STR_ACCENT_LABEL_TT}"
+                               ContentStringFormat="{}{0}:"
+                               Target="{Binding ElementName=sldFontSize}"
+                               Margin="0,3,3,0"
+                             />
+
+                        <colorpick:ColorPicker Grid.Row="1" HorizontalAlignment="Left"
+                                               SelectedColor="{Binding NextAkzentColor}"
+                                               IsOpen="{Binding IsOpenColorPicker,UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"
+                                           />
+                    </Grid>
+
+                    <!-- Default Font size selectors -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="3,18,3,3" MinWidth="200">
+                        <!-- ComboBox Grid.Column="1" ItemsSource="{Binding FontSizes}" SelectedItem="{Binding SelectedFontSize, Mode=TwoWay}" VerticalAlignment="Center" / -->
+
+                        <StackPanel Margin="6,3,6,0">
+                            <Label Content="{x:Static local:Strings.STR_FONT_SIZE_LABEL}"
+                                           ToolTip="{x:Static local:Strings.STR_FONT_SIZE_LABEL_TT}"
+                                           ContentStringFormat="{}{0}:"
+                                           Target="{Binding ElementName=sldFontSize}"
+                                           Margin="0,3,3,0"
+                                           />
+                            <Slider Name="sldFontSize"
+                                            Value="{Binding PointFontSize}"
+                                            Minimum="{Binding PointFontSizeMin}"
+                                            Maximum="{Binding PointFontSizeMax}"
+                                            />
+                            <TextBlock Text="{Binding PointFontSize , UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Margin="6,0">
+                            <Label Content="{x:Static local:Strings.STR_FIXED_FONT_SIZE_LABEL}"
+                                           ToolTip="{x:Static local:Strings.STR_FIXED_FONT_SIZE_LABEL_TT}"
+                                           ContentStringFormat="{}{0}:"
+                                           Target="{Binding ElementName=sldFixedFontSize}"
+                                           Margin="0,3,3,0"
+                                           />
+                            <Slider Name="sldFixedFontSize"
+                                            Value="{Binding PointFixedFontSize}"
+                                            Minimum="{Binding PointFontSizeMin}"
+                                            Maximum="{Binding PointFontSizeMax}"
+                                            />
+                            <TextBlock Text="{Binding PointFixedFontSize , UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+
+                        <StackPanel Margin="6,12">
+                            <Label Content="{x:Static local:Strings.STR_ICON_SIZE_LABEL}"
+                                       ToolTip="{x:Static local:Strings.STR_ICON_SIZE_LABEL_TT}"
+                                       ContentStringFormat="{}{0}:"
+                                       Target="{Binding ElementName=sldIconSize}"
+                                       Margin="0,3,3,0"
+                                       />
+                            <Slider Name="sldIconSize"
+                                        Value="{Binding PointIconSize}"
+                                        Minimum="{Binding PointIconSizeMin}"
+                                        Maximum="{Binding PointIconSizeMax}"
+                                        />
+                            <TextBlock Text="{Binding PointIconSize , UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

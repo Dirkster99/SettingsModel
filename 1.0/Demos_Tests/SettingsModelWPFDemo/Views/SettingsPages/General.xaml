@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="SettingsModelWPFDemo.Views.SettingsPages.General"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             xmlns:local="clr-namespace:SettingsModelWPFDemo.Local"
+             xmlns:behac="clr-namespace:SettingsModelWPFDemo.Behavior"
+             >
+    <Grid>
+        <ScrollViewer>
+            <Grid x:Name="Panel" MinWidth="150" Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="2"  Margin="3">
+                    <CheckBox IsChecked="{Binding ReloadFilesOnAppStart}"
+                              Content="{x:Static local:Strings.STR_ReloadFilesOnStartUp_CAPTION}" Margin="9"/>
+
+                    <StackPanel Margin="6,9">
+                        <Label Content="{x:Static local:Strings.STR_CURRENT_APP_LANG_CAPTION}"
+                               ToolTip="{x:Static local:Strings.STR_CURRENT_APP_LANG_CAPTION_TT}"
+                               ContentStringFormat="{}{0}:"
+                               Target="{Binding ElementName=CMB_ApplicationLanguage}"
+                               Margin="0,3,3,0"
+                               />
+                        <ComboBox ItemsSource="{Binding Languages}"
+                                  SelectedItem="{Binding LanguageSelected}"
+                                  SelectedValuePath="BCP47"
+                                  DisplayMemberPath="DisplayName"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  MinWidth="150" Margin="3,0,3,3"
+                                  ToolTip="{x:Static local:Strings.STR_CURRENT_APP_LANG_CAPTION_TT}"
+                                  Name="CMB_ApplicationLanguage"
+                                  />
+                    </StackPanel>
+
+                    <StackPanel Margin="6,9">
+                        <Label Content="{x:Static local:Strings.STR_BOOKMARKS_OPTION_CAPTION}"
+                            ToolTip="{x:Static local:Strings.STR_BOOKMARKS_OPTION_CAPTION_TT}"
+                            ContentStringFormat="{}{0}:"
+                            Target="{Binding ElementName=LST_Bookmarks}"
+                            Margin="0,3,3,0"
+                            />
+                        <!-- Attached behaviour supports addin entries via enter-->
+                        <TextBox Text="{Binding BookmarkSelected}" Name="TxtBookmarkSelected"
+                                 behac:TextBoxKeyEntered.Command="{Binding AddFolderCommand}"
+                                 />
+                        
+                        <Grid Margin="0,3,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Column="0">
+                                <Button Content="{x:Static local:Strings.STR_GENERAL_Add}"
+                                        Command="{Binding AddFolderCommand}"
+                                        CommandParameter="{Binding ElementName=TxtBookmarkSelected,Path=Text}"/>
+                                <Button Content="{x:Static local:Strings.STR_GENERAL_Remove}"
+                                        Command="{Binding RemoveFolderCommand}"
+                                        CommandParameter="{Binding BookmarkSelected}" />
+                            </StackPanel>
+
+                            <ListBox Grid.Column="1"
+                                    ItemsSource="{Binding Bookmarks}"
+                                    SelectedItem="{Binding BookmarkSelected}"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                                    MinWidth="150" MinHeight="60"
+                                    Margin="3,0,0,3"
+                                    ToolTip="{x:Static local:Strings.STR_CURRENT_APP_BOOKMARK_CAPTION_TT}"
+                                    Name="LST_Bookmarks"
+                                />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

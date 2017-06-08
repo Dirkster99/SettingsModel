@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:appear="clr-namespace:FirstFloor.ModernUI.Presentation;assembly=FirstFloor.ModernUI"
+                    >
+
+    <!-- Somehow this is not styled by default in MUI allthough its there with a resource.key -->
+    <Style TargetType="TextBlock">
+        <!-- x:Key="Fixed" -->
+        <Setter Property="FontFamily" Value="{DynamicResource FixedFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource {x:Static appear:AppearanceManager.KeyFixedFontSize}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource WindowText}"/>
+
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+    </Style>
+
+</ResourceDictionary>
