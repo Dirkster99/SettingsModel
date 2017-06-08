@@ -2,8 +2,8 @@
 
 This project is about localized WPF/Modern UI applications with a clear and consistent MVVM design in order to take full advantage of WPFs capabilities.
 
-* [User Documentation](User Documentation)
-* [Technical Documentation](Technical Documentation)
+* [User Documentation](User_Documentation)
+* [Technical Documentation](Technical_Documentation)
 
 ![](Documentation_Step3.png)
 
